@@ -70,5 +70,9 @@ class Preprocessing:
         X_vectorized=self.vectorize(X_cleaned)
         
         return X_cleaned, X_vectorized
+   
 
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
+    
 
