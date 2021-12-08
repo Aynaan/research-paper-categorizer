@@ -16,7 +16,7 @@ class request_body(BaseModel):
 
 
 
-@app.post('/predict')
+@app.get('/predict')
 def predict(data : request_body):
     title=data.title
     abstract=data.abstract
