@@ -41,5 +41,5 @@ def predict(data : request_body):
        if(temp>=j):
            prediction.append(i)
 
-    return prediction
+    return {"Prediction":prediction}
    
