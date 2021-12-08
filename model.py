@@ -5,8 +5,6 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re
 import pickle
-tfidf_abstract = pickle.load(open("tfidf_abstract.pkl", 'rb'))
-tfidf_title=pickle.load(open("tfidf_title.pkl", 'rb'))
 from tensorflow import keras
 
 
