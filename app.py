@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Response
 import uvicorn
 from pydantic import BaseModel
 from model import Preprocessing
@@ -7,6 +7,8 @@ import pandas as pd
 from tensorflow import keras
 # Creating FastAPI instance
 app = FastAPI()
+
+
  
 # Creating class to define the request body
 # and the type hints of each attribute
@@ -16,11 +18,13 @@ class request_body(BaseModel):
 
 
 
-@app.get('/predict')
+@app.post('/predict')
 def predict(data : request_body):
     title=data.title
     abstract=data.abstract
     pp=Preprocessing()
+    pp.vectorizer_abstract=pickle.load(open("tfidf_abstract.pkl", 'rb'))
+    pp.vectorizer_title=pickle.load(open("tfidf_title.pkl", 'rb'))
     title_input = pd.Series(title)
     title_cleaned, title_vectorized = pp.preprocess(title_input, training="title")
 
@@ -41,5 +45,5 @@ def predict(data : request_body):
        if(temp>=j):
            prediction.append(i)
 
+    #return prediction
     return {"Prediction":prediction}
-   
