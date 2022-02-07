@@ -18,8 +18,8 @@ class Preprocessing:
         # initializing objects for different preprocessing techniques
         self.stop_words = stopwords.words('english')
         self.lemmatizer = WordNetLemmatizer()
-        self.vectorizer_abstract = tfidf_abstract
-        self.vectorizer_title = tfidf_title
+        self.vectorizer_abstract = None
+        self.vectorizer_title = None
         self.training = None
         
     
